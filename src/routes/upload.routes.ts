@@ -1,10 +1,10 @@
 import { Router } from "express";
 import { UploadController } from "../controllers/upload.controller";
-import { uploadExcel } from "../config/multer";
+import { uploadCsv } from "../config/multer";
 
 const router = Router();
 const controller = new UploadController();
 
-router.post("/", uploadExcel.single("file"), controller.upload);
+router.post("/csv", uploadCsv.single("file"), controller.upload);
 
 export default router;

@@ -1,10 +1,9 @@
-import { Request, Response } from "express";
 import { UploadService } from "../services/upload.service";
 
 const service = new UploadService();
 
 export class UploadController {
-  async upload(req: Request, res: Response) {
+  async upload(req: any, res: any) {
     try {
       if (!req.file) {
         return res.status(400).json({
@@ -13,7 +12,8 @@ export class UploadController {
         });
       }
 
-      const upload = await service.createUpload(req.file);
+      // const upload = await service.createUpload(req.file!, req.user.id);
+      const upload = await service.createUpload(req.file!, 1);
 
       return res.status(201).json({
         success: true,
