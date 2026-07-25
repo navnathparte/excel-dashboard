@@ -3,6 +3,7 @@ import cors from "cors";
 import helmet from "helmet";
 import compression from "compression";
 import dotenv from "dotenv";
+import routes from "./routes/routes";
 
 dotenv.config();
 
@@ -21,5 +22,7 @@ app.get("/", (_, res) => {
     message: "Excel Dashboard Backend Running",
   });
 });
+
+app.use("/api", routes);
 
 export default app;
